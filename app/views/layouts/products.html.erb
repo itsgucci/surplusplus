@@ -4,15 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Products: <%= controller.action_name %></title>
+  <title>sur+plus /.<%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold', 'wice_grid' %>
 	<%= javascript_include_tag :defaults %>
 </head>
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield  %>
-
+	<h1 style="text-align:center"><%= link_to "sur+plus", '/', :style => "text-decoration:none;color:#000;background-color:#fff" %></h1>
+	<div style="margin: 0 20%">
+		<p style="color: green"><%= flash[:notice] %></p>
+		<%= yield  %>		
+	</div>
+	<%= image_tag 'hungrychild.jpg', :style => "position:fixed;left:0;top:0;width:20%" %>
+	<%= image_tag 'hungrychildr.jpg', :style => "position:fixed;right:0;top:0;width:20%" %>
 </body>
 </html>

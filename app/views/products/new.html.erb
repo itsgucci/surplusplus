@@ -1,15 +1,14 @@
-<h1>New product</h1>
+<h1>share my surplus</h1>
 
 <% form_for(@product) do |f| %>
   <%= f.error_messages %>
 
-	name:<%= f.text_field :name %>
-	quantity: <%= f.text_field :quantity %>
-	location: <%= f.text_field :location %>
-	harvested on: <%= f.date_select :harvested_on %>
+	<p>product: <%= f.text_field :name %></p>
+	<p>quantity: <%= f.text_field :quantity %></p>
+	<p>location: <%= f.text_field :location %></p>
+	<p>harvested on: <%= f.date_select :harvested_on %></p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "share" %> <%= link_to 'cancel', products_path %>
   </p>
 <% end %>
 
-<%= link_to 'Back', products_path %>

@@ -1,7 +1,5 @@
-<h1>Listing products</h1>
-
 <%= grid(@products) do |g|
-	g.column :column_name => "name", :attribute_name => "name" do |product|
+	g.column :column_name => "product", :attribute_name => "name" do |product|
 		product.name
 	end
 	g.column :column_name => "quantity", :attribute_name => "quantity" do |product|
@@ -23,4 +21,4 @@ end -%>
 
 <br />
 
-<%= link_to 'New product', new_product_path %>
+<%= link_to 'share my surplus', new_product_path %>
