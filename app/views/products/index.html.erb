@@ -7,21 +7,18 @@
 	g.column :column_name => "quantity", :attribute_name => "quantity" do |product|
 		product.quantity
 	end
-	g.column :column_name => "location", :attribute_name => "location" do |product|
+	g.column :column_name => "location", :attribute_name => "location", :custom_filter => :auto do |product|
 		product.location
 	end	
 	g.column :column_name => "harvested on", :attribute_name => "harvested_on" do |product|
 		product.harvested_on.strftime('%D')
 	end
 	g.column do |product|
-		link_to('Edit', edit_product_path(product))
+		link_to('take some', take_product_path(product), :method => :post)
 	end
 	# g.column do |product|
 	# 	link_to('show', product)
 	# end
-	g.column do |product|
-		link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete
-	end
 end -%>
 
 <br />

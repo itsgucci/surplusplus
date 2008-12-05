@@ -83,4 +83,20 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # POST /products/1/take
+  def take
+    @product = Product.find(params[:id])
+
+    respond_to do |format|
+      if Product.decrement_counter('quantity', params[:id])
+        flash[:notice] = "You have taken #{@product.name}."
+        format.html { redirect_to(products_path) }
+        #format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        #format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 end
