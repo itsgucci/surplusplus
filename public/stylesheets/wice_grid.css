@@ -1,5 +1,6 @@
 .wice_grid {
   width: 100%;
+  border-collapse:;
 }
 .wice_grid .odd {
   background-color: #f3f3f3;

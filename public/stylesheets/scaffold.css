@@ -1,9 +1,17 @@
-body { background-color: #fff; color: #333; }
+body { 
+  background-color: #fff; 
+  color: #333; 
+  background-image: url(/images/green041.gif);
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
+  font-size:   17px;
+  line-height: 21px;
+}
+
+img {
+  border: none;
 }
 
 pre {
@@ -13,8 +21,13 @@ pre {
 }
 
 a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+a:visited { color: #333; }
+a:hover { color: #fff; background-color:#888; }
+
+.box {
+  background:url(/images/fff-62.png);
+  padding: 0.5em 1em;
+}
 
 .fieldWithErrors {
   padding: 2px;
