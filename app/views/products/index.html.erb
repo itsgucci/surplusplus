@@ -1,19 +1,21 @@
 <div class="box">
 <%= grid(@products) do |g|
-	g.column :column_name => "product", :attribute_name => "name" do |product|
-		product.name
-	end
-	g.column :column_name => "quantity", :attribute_name => "quantity" do |product|
-		product.quantity
-	end
 	g.column :column_name => "location", :attribute_name => "location", :custom_filter => :auto do |product|
 		product.location
 	end	
+	g.column :column_name => "product", :attribute_name => "name" do |product|
+		product.name
+	end
+	
 	g.column :column_name => "harvested on", :attribute_name => "harvested_on" do |product|
 		product.harvested_on.strftime('%D')
 	end
+	
+	g.column :column_name => "quantity", :attribute_name => "quantity" do |product|
+		product.quantity
+	end
 	g.column do |product|
-		link_to('take some', take_product_path(product), :method => :post)
+		link_to('take-one', take_product_path(product), :method => :post)
 	end
 	# g.column do |product|
 	# 	link_to('show', product)
@@ -22,5 +24,4 @@ end -%>
 
 <br />
 
-<%= link_to 'share my abundance', new_product_path %>
 </div>
