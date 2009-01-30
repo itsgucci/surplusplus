@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        flash[:notice] = 'Product was successfully created.'
+        flash[:notice] = "#{@product.quantity} #{@product.name} were deposited at #{@product.location}."
         format.html { redirect_to(products_path) }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
@@ -87,10 +87,27 @@ class ProductsController < ApplicationController
   # POST /products/1/take
   def take
     @product = Product.find(params[:id])
-
     respond_to do |format|
       if Product.decrement_counter('quantity', params[:id])
-        flash[:notice] = "You have taken #{@product.name} from #{@product.location}."
+        @product.reload
+        flash[:notice] = "You have taken #{@product.name} from #{@product.location}, #{@product.quantity} remain."
+        flash[:last_taken] = @product.id
+        format.html { redirect_to(products_path) }
+        #format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        #format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  # POST /products/1/replace
+  def replace
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      if Product.increment_counter('quantity', params[:id])
+        @product.reload
+        flash[:notice] = "You have replaced one #{@product.name} at #{@product.location}, #{@product.quantity} now available."
         format.html { redirect_to(products_path) }
         #format.xml  { head :ok }
       else
