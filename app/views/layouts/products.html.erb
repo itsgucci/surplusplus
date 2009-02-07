@@ -15,12 +15,19 @@
 			<p>This website helps gardeners share harvests</p>
 			<p>Establish an exchange location with fellow gardeners, then update the inventory and enjoy</p>
 			<p><%= link_to 'Deposit abundance now', new_product_path %></p>
+			<p style="display:none">Find out more | Get help</p>
 		</div>
 	</div>
 	<div style="margin-left:275px">
 		<%- if flash[:notice] %>
 		<div class="box notice" style="text-align:right;margin-bottom: 1em;">
 			<p style="float:left"><%= flash[:notice] %></p>
+			<p><%- if flash[:last_taken] %><%= link_to('undo', replace_product_path(flash[:last_taken]), :method => :post) %> or <%= link_to('take-another', take_product_path(flash[:last_taken]), :method => :post) %><%- end %>&nbsp;</p>
+		</div>
+		<%- end %>
+		<%- if flash[:error] %>
+		<div class="box notice" style="text-align:right;margin-bottom: 1em;">
+			<p style="float:left"><%= flash[:error] %></p>
 			<p><%- if flash[:last_taken] %><%= link_to('undo', replace_product_path(flash[:last_taken]), :method => :post) %> or <%= link_to('take-another', take_product_path(flash[:last_taken]), :method => :post) %><%- end %>&nbsp;</p>
 		</div>
 		<%- end %>

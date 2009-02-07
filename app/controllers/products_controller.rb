@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # GET /products.xml
   def index
     #@products = Product.find(:all)
-    @products = initialize_grid(Product, :conditions => ["quantity > 0"])
+    @products = initialize_grid(Product, :erb_mode => true, :conditions => ["quantity > 0"])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -87,17 +87,16 @@ class ProductsController < ApplicationController
   # POST /products/1/take
   def take
     @product = Product.find(params[:id])
+    quantity_desired = params[:quantity_desired].to_i
+    if @product.quantity >= quantity_desired
+      remaining = @product.quantity - quantity_desired
+      @product.update_attribute('quantity', remaining)
+      flash[:notice] = "You have taken #{quantity_desired} #{@product.name} from #{@product.location}, #{@product.quantity} remain."
+    else
+      flash[:error] = "You are attempting to take more than exist, please live within our means and try again."
+    end
     respond_to do |format|
-      if Product.decrement_counter('quantity', params[:id])
-        @product.reload
-        flash[:notice] = "You have taken #{@product.name} from #{@product.location}, #{@product.quantity} remain."
-        flash[:last_taken] = @product.id
-        format.html { redirect_to(products_path) }
-        #format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        #format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
-      end
+      format.html { redirect_to(products_path) }
     end
   end
   
