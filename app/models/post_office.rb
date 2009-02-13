@@ -1,5 +1,4 @@
 class PostOffice < ActionMailer::Base
-  
 
   def daily_inventory(recipient)
     
@@ -9,7 +8,6 @@ class PostOffice < ActionMailer::Base
     recipients recipient.email
     from       'inventory@surplus.localgarden.us'
     sent_on    Time.now
-    
     body       :recipient => recipient, :products => products
   end
 
