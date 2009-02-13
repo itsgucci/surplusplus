@@ -9,13 +9,12 @@
 	<%= javascript_include_tag :defaults %>
 </head>
 <body>
-	<div id="header" style="float:left;width:259px">
+	<div id="header" style="float:left;width:250px">
 		<div class="box">
-			<%= link_to image_tag('surplus.png'), '/', :style => "position:relative;left: -0.2em" %>
+			<%= link_to image_tag('surplus.png'), '/', :style => "position:relative;left: -0.5em" %>
 			<p>This website helps gardeners share abundant harvests</p>
-			<p><%= link_to '+ Deposit abundance now', new_product_path %></p>
-			<p style="display:block;border-bottom:1px #999 solid;font-weight:bold;color:#666;margin-bottom:0;">How to Use Sur+plus</p>
 			<p style="margin-top:0.2em">Establish an exchange location with fellow gardeners, then update the inventory and enjoy</p>
+			<p><%= link_to 'Deposit abundance now', new_product_path %></p>
 			<p style="display:none">Find out more | Get help</p>
 			<p style="font-size:small;text-align:right;color:#666">an <%= link_to "Open Source", "http://github.com/itsgucci/surplusplus/tree/master" %> project</p>
 		</div>

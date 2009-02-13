@@ -1,0 +1,11 @@
+Aloha <%= @recipient.name %>,
+
+Here is the current inventory for <%= Time.now.strftime('%D') %>:
+
+Location - Product - Quantity - Harvested on
+<%- @products.each do |product| %><%= product.location %> - <%= product.name %> - <%= product.quantity %> - <%= product.harvested_on.strftime('%D') %>
+<%- end %>
+
+Please remember products and their quantity may change during the course of the day. Check out http://surplus.localgarden.us for the most up to date information.
+
+Enjoy!
